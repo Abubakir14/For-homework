@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+  cursor: -webkit-grab;
+}
+
+.app-title {
+  border-style: ridge;
+  border-color: darkgoldenrod;
+}
+.Dob-card {
+  border-color: darkgoldenrod;
+}
+.inp1 {
+  margin-top: 30px;
+  font-size: large;
+  border-color: darkgoldenrod;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.inp2 {
+  margin-top: 30px;
+  margin-left: 20px;
+  font-size: large;
+  border-color: darkgoldenrod;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.container {
+  background-color: khaki;
+  border-radius: 20px;
+  /* margin-left: 250px; */
+  margin: 0 auto;
+  width: 800px;
+  height: 700;
+  border-radius: 10px solid;
+  border-style: initial;
+}
+.btn-add-btn {
+  margin-top: 50px;
+  border-color: rgb(192, 97, 19);
+  border-radius: 15%;
+  background-color: rgb(235, 171, 77);
+  font-size: x-large;
+}
+.CARD {
+  text-align: center;
+  border-radius: 20px;
+  background-color: darkgoldenrod;
+  font-size: xx-large;
+  margin: auto;
+  /* width: 100px; */
+  justify-content: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
