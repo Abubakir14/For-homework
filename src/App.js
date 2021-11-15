@@ -1,104 +1,44 @@
-import React from "react";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+import Login from './components/Login/Login';
+import Home from './components/Home/Home';
+import MainHeader from './components/MainHeader/MainHeader';
 
-    this.state = {
-      id: 0,
-      word: "",
-      translate: "",
-      cards: [],
-    };
-  }
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  // состояние isLoggedIn если всё будет true то пользователь пройдёт регстр и якобы перейдёт в нами созданную страницу Home
 
-  updateInput(key, value) {
-    this.setState({
-      [key]: value,
-    });
-  }
+  useEffect(() => {
+  const storedUserLogged = localStorage.getItem('isLoggedIn') // юс ефект с локал стораж берём 'isLoggedIn'
 
-  addCard() {
-    const newCard = {
-      id: 1 + this.state.id,
-      value: {
-        word: this.state.word.slice(),
-        translate: this.state.translate.slice(),
-        overturned: false,
-      },
-    };
+    if(storedUserLogged === '1') { 
+      setIsLoggedIn(true)                                     // если storedUserLogged будет равно к 1 то setIsLoggedIn будет true
+    }
+  }, [])
 
-    this.setState({
-      id: newCard.id,
-      word: "",
-      translate: "",
-      cards: [...this.state.cards, newCard],
-    });
-  }
+  
 
-  turnCard(id) {
-    const cards = [...this.state.cards];
 
-    let index = cards.findIndex((card) => {
-      return card.id === id;
-    });
+  const loginHandler = (email, password) => {
+    // We should of course check email and password
+    // But it's just a dummy/ demo anyways
+    setIsLoggedIn(true);  // это константа чтобы в случае если !isLoggedIn true то мы loginHandler передаём к <Login/>
+  };
+  
+  const logoutHandler = () => {
+    localStorage.removeItem('isLoggedIn')
+    setIsLoggedIn(false);   // это константа чтобы с помощью которой можно удалиться с локалсторадж 
+  };
 
-    cards[index].value.overturned = !cards[index].value.overturned;
-
-    this.updateInput("cards", cards);
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <h1 className="app-title">Карточки английских слов</h1>
-        <div className="container">
-          <div className="Dob-card">
-          Добавить карточку...
-          </div>
-          <br/>
-          <input
-            className="inp1"
-            type="text"
-            placeholder=""
-            value={this.state.word}
-            onChange={(e) => this.updateInput("word", e.target.value)}
-          />
-          <input
-            className="inp2"
-            type="text"
-            placeholder=""
-            value={this.state.translate}
-            onChange={(e) => this.updateInput("translate", e.target.value)}
-          />
-          <br/>
-          <button className="btn-add-btn" onClick={() => this.addCard()}>
-            Добавить
-          </button>
-          <div 
-                className="CARD"
-              >
-            {this.state.cards.map((card) => {
-              return (
-                <div
-                  key={card.id}
-                  className={
-                    "card" + (card.value.overturned ? " overturned" : "")
-                  }
-                  onClick={() => this.turnCard(card.id)}
-                >
-                  {card.value.overturned
-                    ? card.value.translate
-                    : card.value.word}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    );
-  }
+  
+  return (
+    <React.Fragment>
+      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} /> {/*в фрагменте мы рендерим MainHeader в нём стейт*/}
+      <main>
+        {!isLoggedIn && <Login onLogin={loginHandler} />} {/*по умолчанию isLoggedIn у нас фолс и мы должны пройти регистрацию */}
+        {isLoggedIn && <Home onLogout={logoutHandler} />} {/*по умолчанию isLoggedIn у нас true то к нам откроется Home logout компонента*/}
+      </main>
+    </React.Fragment>
+  );
 }
 
 export default App;
