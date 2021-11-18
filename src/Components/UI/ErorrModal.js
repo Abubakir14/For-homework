@@ -5,8 +5,6 @@ import Backdrop from "./Backdrop";
 import ModalOverlay from "./ModalOverlay";
 
 
-
-
 const ErrorModal = props => {
     return (
         <React.Fragment>

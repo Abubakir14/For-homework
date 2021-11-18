@@ -3,7 +3,6 @@ import classes from './ErorrModal.module.css'
 import Card from "./Card";
 import Button from "./Button";
     
-
 const ModalOverlay = props => {
     
     return(

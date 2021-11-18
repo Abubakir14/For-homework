@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../UI/Button";
 
+
 const DeleteGoalItem = props => {
   
     const deleteItemHandler = () => {

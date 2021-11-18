@@ -3,7 +3,6 @@ import classes from '../UI/ErorrModal.module.css'
 import Card from "../UI/Card";
 import Button from "../UI/Button";
     
-
 const DeleteOverlay = props => {
     return(
         <Card className={classes.modal}>

@@ -4,9 +4,6 @@ import DeleteOverlay from "../Users/DeleteOverlay";
 import { Fragment } from "react/cjs/react.development";
 
 
-
-
-
 const DeleteModal = props => {
     return (
         <>
