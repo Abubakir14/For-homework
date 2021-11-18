@@ -13,7 +13,7 @@ const DeleteOverlay = props => {
                 <div className={classes.conent}>
                 </div>
                 <footer className={classes.actions}> 
-                    <Button onClick={props.onConfirm}>Confirm</Button>
+                    <Button onClick={props.onDelete}>Confirm</Button>
                     <Button onClick={props.onConfirm}>Cancel</Button>
                 </footer>
             </Card>

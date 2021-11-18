@@ -6,11 +6,6 @@ function App() {
   const [userList, setUserList] = useState([])
 
   const addUserHandler = (uName, uAge) => {
-    // setUserList([
-    //   ...userList,
-    //   {name: uName, age: uAge, id: Math.random().toString()}
-    // ]
-    // );
 
     setUserList((prevUserList) => {
       return [ 
@@ -20,10 +15,17 @@ function App() {
     })
   }
 
+  const deleteItemHandler = goalId => { 
+    setUserList(prevGoals => {
+      const updatedGoals = prevGoals.filter(user => user.id !== goalId);
+      return updatedGoals;
+    });
+  };
+
   return (
     <>
       <AddUser onAddUser={addUserHandler}/>
-      <UsersList users={userList}/>
+      <UsersList users={userList}   onDeleteItem={deleteItemHandler}/>
     </>
   );
 }
