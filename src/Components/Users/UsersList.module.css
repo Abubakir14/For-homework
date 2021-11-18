@@ -12,4 +12,24 @@
   border: 1px solid #ccc;
   margin: 0.5rem 0;
   padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.button {
+  font: inherit;
+  border: 1px solid #4f005f;
+  background: #4f005f;
+  padding: 8px 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover,
+button:active {
+  background: #741188;
+  border-color: #741188;
+}
+
+.button:focus {
+  outline: none;
 }
